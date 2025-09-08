@@ -138,6 +138,6 @@ func overwriteForwardedFor(r *http.Request) error {
 		return errors.New("missing CF-Connecting-IP header")
 	}
 
-	r.Header.Set("X-Forwarded-For", ip)
+	r.Header.Add("X-Forwarded-For", ip)
 	return nil
 }
