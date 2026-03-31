@@ -135,7 +135,8 @@ func (c *Cloudflare) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func overwriteForwardedFor(r *http.Request) error {
 	ip := r.Header.Get("CF-Connecting-IP")
 	if ip == "" {
-		return errors.New("missing CF-Connecting-IP header")
+		return nil
+		// return errors.New("missing CF-Connecting-IP header")
 	}
 
 	r.Header.Add("X-Forwarded-For", ip)
